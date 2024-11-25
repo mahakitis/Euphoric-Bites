@@ -1,0 +1,93 @@
+{% extends 'food/base.html' %}
+
+{% block head %}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        background-color: #fff;
+        border: none;
+        border-radius: 15px;
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+    }
+
+    .card-title {
+        font-size: 2em;
+        font-weight: bold;
+    }
+
+    .card-subtitle {
+        font-size: 1.2em;
+        margin-top: 10px;
+        color: #6c757d;
+    }
+
+    .card-text {
+        font-size: 1.5em;
+        margin-top: 10px;
+        color: #28a745;
+    }
+
+    .btn-danger {
+        font-size: 1em;
+        padding: 10px 20px;
+        background-color: #dc3545;
+        border: none;
+        border-radius: 25px;
+        transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+        transform: scale(1.05);
+    }
+
+    .card-body {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .img-fluid {
+        border-radius: 15px 0 0 15px;
+        transition: transform 0.2s;
+    }
+
+    .img-fluid:hover {
+        transform: scale(1.1);
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ item.item_image }}" class="img-fluid rounded-start" alt="{{ object.item_name }}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h1 class="card-title">{{ object.item_name }}</h1>
+                            <h2 class="card-subtitle mb-2">{{ object.item_desc }}</h2>
+                            <h3 class="card-text">{{ object.item_price }}</h3>
+                            <a href="{% url 'food:delete_item' item.id %}" class="btn btn-danger mt-3">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
